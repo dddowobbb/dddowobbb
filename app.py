@@ -70,8 +70,5 @@ else:
                      title=f"{y_col}의 class별 박스플롯")
         st.plotly_chart(fig, use_container_width=True)
 
-chart_type = st.selectbox(
-    "원하는 그래프 유형을 선택하세요",
-    ["히스토그램", "막대그래프", "파이차트", "상관 히트맵", "산점도", "박스플롯"]
-)
+chart_type = st.selectbox("원하는 그래프 유형을 선택하세요",["히스토그램", "막대그래프", "파이차트", "상관 히트맵", "산점도", "박스플롯"])
 
