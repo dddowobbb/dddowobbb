@@ -50,25 +50,3 @@ if uploaded_file:
     )
     st.plotly_chart(heatmap, use_container_width=True)
 
-else:
-    st.info("먼저 CSV 파일을 업로드해주세요.")
-    elif chart_type == "산점도":
-        st.markdown("두 수치형 변수 간 관계를 시각화합니다.")
-        numeric_cols = df.select_dtypes(include=["int", "float"]).columns.tolist()
-        x_col = st.selectbox("X축 변수 선택", numeric_cols)
-        y_col = st.selectbox("Y축 변수 선택", numeric_cols, index=1)
-
-        fig = px.scatter(df, x=x_col, y=y_col, color="class",
-                         title=f"{x_col} vs {y_col} 산점도 (class별 구분)")
-        st.plotly_chart(fig, use_container_width=True)
-
-    elif chart_type == "박스플롯":
-        st.markdown("변수의 분포와 이상치를 시각화합니다.")
-        numeric_cols = df.select_dtypes(include=["int", "float"]).columns.tolist()
-        y_col = st.selectbox("Y축 변수 선택", numeric_cols)
-        fig = px.box(df, x="class", y=y_col, color="class",
-                     title=f"{y_col}의 class별 박스플롯")
-        st.plotly_chart(fig, use_container_width=True)
-
-chart_type = st.selectbox("원하는 그래프 유형을 선택하세요",["히스토그램", "막대그래프", "파이차트", "상관 히트맵", "산점도", "박스플롯"])
-
